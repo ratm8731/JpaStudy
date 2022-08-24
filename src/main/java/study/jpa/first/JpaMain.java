@@ -11,7 +11,8 @@ public class JpaMain {
     public static void main(String[] args) {
 //        save();
 //        find();
-        findByJpql();
+//        findByJpql();
+        persistContextSample();
     }
 
     private static void save() {
@@ -64,6 +65,39 @@ public class JpaMain {
             for (Member member : members) {
                 System.out.println("member.name = "+member.getName());
             }
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+        } finally {
+            entityManager.close();
+        }
+    }
+    private static void persistContextSample() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa-study");
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        try {
+            // 엔티티 비영속
+            Member member1 = new Member(6L, "test6");
+            Member member2 = new Member(7L, "test7");
+
+            // 엔티티를 영속
+            entityManager.persist(member1);
+            entityManager.persist(member2);
+
+            entityManager.flush();
+            System.out.println("======================================");
+            Member findMember = entityManager.find(Member.class, 3L);
+            Member findMember1 = entityManager.find(Member.class, 3L);
+            System.out.println("findMember.id = "+findMember.getId());
+            System.out.println("findMember.name = "+findMember.getName());
+            System.out.println("result = "+ (findMember == findMember1));
+
+
+            findMember.setName("test3333");
+
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
