@@ -1,4 +1,4 @@
-## 1주차
+# 1주차
 
 ## JPA(Java Persistence API)
 
@@ -23,11 +23,11 @@
 
 ## 영속성 관리
 
-# Persistence Context내의 엔티티의 생명주기
+### Persistence Context내의 엔티티의 생명주기
 
 ![Entity LifeCycle](img/entity_lifecycle1.png)
 
-# Persist
+### Persist
   - 엔티티 객체를 생성했다면, 이 객체는 Transient/New 상태
   - 엔티티를 Persistence Context가 관리하도록 하기 위해서는 persist 메서드를 호출
   - managed(영속)상태로 진입
@@ -37,7 +37,7 @@
     em.persist(article);   // Managed
 ```
 
-# Detach
+### Detach
   - 엔티티가 managed인 상태에서 detach 메서드를 호출하면, 해당 엔티티는 detached 상태
   - 더이상 Persistence Context에 의해 관리를 받지 않게 됨
  ```
@@ -45,7 +45,7 @@
     article.setContent(anotherContent); // will not saved automatically
 ```
 
-# Merge
+### Merge
   - detached 상태의 인스턴스를 이용해, Persistence Context나 DB의 엔티티를 업데이트
   - Merge의 기본 동작
     ```
@@ -71,7 +71,7 @@
   - Merge의 특징으로부터 유의 사항
     - Spring Data, Spring Data JPA 에서 제공하는 CrudRepository나 JpaRepository가 제공하는 save 메서드는 항상 Instance를 반환
 
-# Remove
+### Remove
 
   ```
   em.remove(comment); // will removed from db
@@ -82,7 +82,7 @@
     - 참조되는 데이터까지 삭제하는 Cascade.REMOVE option 사용 가능
     - Cascade를 원치 않을때에는 참조되는 데이터에 FK를 NULL로 변경해주는 방법이 있지만 별로 
    
-## 플러시
+### 플러시
 - 플러시(flush())는 영속성 컨텍스트의 변경 내용을 DB에 반영하는 연산
   - 변경 감지 -> 영속성 컨텍스트의 엔티티와 스냅샷 비교 -> 수정된 엔티티 수정 쿼리 생성 -> 쓰기 지연 SQL 저장소 등록
   - 쓰기 지연 SQL 저장소 -> DB 로 쿼리 전송
@@ -93,4 +93,3 @@
   - 트랜잭션 커밋시 자동 호출 
   - JPQL 쿼리 실행 시 자동 호출
 - 플러시는 영속성 컨텍스트에 보관된 엔티티를 DB에 동기화하는것이지 지우는것은 아니다
-
