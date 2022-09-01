@@ -1,10 +1,11 @@
 package study.jpa.first;
 
+import study.jpa.domain.Member;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.transaction.Transaction;
 import java.util.List;
 
 public class JpaMain {
@@ -80,8 +81,8 @@ public class JpaMain {
         transaction.begin();
         try {
             // 엔티티 비영속
-            Member member1 = new Member(6L, "test6");
-            Member member2 = new Member(7L, "test7");
+            Member member1 = new Member("test6");
+            Member member2 = new Member("test7");
 
             // 엔티티를 영속
             entityManager.persist(member1);
