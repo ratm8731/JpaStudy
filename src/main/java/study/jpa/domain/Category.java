@@ -3,6 +3,7 @@ package study.jpa.domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 public class Category {
@@ -10,7 +11,7 @@ public class Category {
     @GeneratedValue
     private Long id;
     private String name;
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
     @OneToMany(mappedBy = "parent")
