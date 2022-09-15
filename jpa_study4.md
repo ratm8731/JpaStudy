@@ -21,6 +21,7 @@
   * jooq는 만들어진 스키마를 바탕으로 java 도메인으로 만들어 사용
   * [jOOQ vs. Hibernate: When to Choose Which](https://blog.jooq.org/jooq-vs-hibernate-when-to-choose-which/)
   * [QueryDSL vs jOOQ](https://blog.jooq.org/querydsl-vs-jooq-feature-completeness-vs-now-more-than-ever/)
+  * [Hibernate & jOOQ – A Match Made in Heaven](https://thorben-janssen.com/hibernate-jooq-a-match-made-in-heaven/)
 
 ### QueryDSL
 
