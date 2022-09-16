@@ -17,8 +17,8 @@
 * DB 스키마를 기반으로 JAVA 도메인을 생성함.
 * JOOQ & QueryDSL 차이점
   * 성능 차이는 비슷
-  * QueryDSL는 java 도메인을 생성해가며 스키마를 생성
-  * jooq는 만들어진 스키마를 바탕으로 java 도메인으로 만들어 사용
+  * QueryDSL는 java 도메인을 생성해가며 스키마를 생성하며 Entity를 리턴
+  * jooq는 만들어진 스키마를 바탕으로 java 도메인으로 만들어 사용 Class를 리턴
   * [jOOQ vs. Hibernate: When to Choose Which](https://blog.jooq.org/jooq-vs-hibernate-when-to-choose-which/)
   * [QueryDSL vs jOOQ](https://blog.jooq.org/querydsl-vs-jooq-feature-completeness-vs-now-more-than-ever/)
   * [Hibernate & jOOQ – A Match Made in Heaven](https://thorben-janssen.com/hibernate-jooq-a-match-made-in-heaven/)
@@ -30,6 +30,10 @@
 * 컴파일 시점에 문법 오류를 찾을 수 있음
 * 동적쿼리 작성 편리함
 * 단순하고 쉬움
+
+### 네이티브 SQL
+* 데이터베이스에 종속적인 기능을 사용
+* SQL만 직접 작성하는 것일 뿐 나머지는 JPQL을 사용할 때와 같다
 
 ### JPQL
 
